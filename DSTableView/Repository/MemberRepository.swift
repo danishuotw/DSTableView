@@ -9,7 +9,7 @@
 import Foundation
 
 class MemberRepository {
-    static let share = MemberRepository()
+    static let shared = MemberRepository()
     
     var isAutoPlay: Bool {
         set {

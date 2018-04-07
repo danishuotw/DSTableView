@@ -7,3 +7,23 @@
 //
 
 import Foundation
+
+class SettingViewModel {
+    weak var delegate: SettingViewProtocol?
+    var items = [SettingItemProtocol]()
+    
+    init(delegate: SettingViewProtocol) {
+        self.delegate = delegate
+        self.setupItem()
+    }
+    
+    private func setupItem() {
+        items.removeAll()
+        let user = UserItem()
+        items.append(user)
+    }
+}
+
+extension SettingViewModel: SettingViewModelProtocol {
+
+}
