@@ -9,9 +9,9 @@
 import Foundation
 
 protocol VideoListViewProtocol: class {
-    
+    func updateUI()
 }
 
 protocol VideoListViewModelProtocol {
-    
+    func fetchData()
 }

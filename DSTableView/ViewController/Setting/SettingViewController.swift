@@ -9,7 +9,6 @@
 import UIKit
 
 class SettingViewController: UIViewController {
-    
     @IBOutlet weak var tableView: UITableView!
     
     lazy var viewModel: SettingViewModel = {

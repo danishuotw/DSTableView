@@ -8,6 +8,8 @@
 
 import XCTest
 @testable import DSTableView
+@testable import SwiftyJSON
+@testable import RxSwift
 
 class DSTableViewTests: XCTestCase {
     
@@ -30,6 +32,32 @@ class DSTableViewTests: XCTestCase {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
+        }
+    }
+    
+    func testAPI() {
+        let expectation = self.expectation(description: "VideoListRepository getVideoListData() TEST")
+        
+        _ = VideoListRepository
+            .shared
+            .getVideoListData()
+            .subscribe(onNext: { (videoListModel) in
+                let model = videoListModel
+                print(model)
+                XCTAssert(true)
+            }, onError: { (error) in
+                print(error.localizedDescription)
+                XCTAssert(false)
+            }, onCompleted: {
+                expectation.fulfill()
+            }, onDisposed: {
+                print("onDisposed")
+            })
+        
+        waitForExpectations(timeout: 10.0) { (error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
         }
     }
     

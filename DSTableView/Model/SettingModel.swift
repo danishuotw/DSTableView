@@ -2,7 +2,7 @@
 //  SettingModel.swift
 //  DSTableView
 //
-//  Created by Danishuo on 07/04/2018.
+//  Created by Danishuo on 10/04/2018.
 //  Copyright © 2018 ettoday. All rights reserved.
 //
 
@@ -28,7 +28,6 @@ protocol SettingItemProtocol {
     var sectionTitle: String { get }
     var rowCount: Int { get }
 }
-
 
 class UserItem: SettingItemProtocol {
     var type: SettingItemType {

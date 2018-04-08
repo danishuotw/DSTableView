@@ -9,11 +9,16 @@
 import UIKit
 
 class VideoListViewController: UIViewController {
-
+    @IBOutlet weak var tableView: UITableView!
+    
+    lazy var viewModel: VideoListViewModel = {
+        return VideoListViewModel(delegate: self)
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.setup()
+        self.viewModel.fetchData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,5 +26,44 @@ class VideoListViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    private func setup() {
+        self.tableView.register(UINib(nibName: "VideoListCell", bundle: nil), forCellReuseIdentifier: "VideoListCell")
+    }
+}
 
+// MARK: VideoListViewProtocol
+extension VideoListViewController: VideoListViewProtocol {
+    func updateUI() {
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.reloadData()
+    }
+}
+
+// MARK: UITableViewDelegate
+extension VideoListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 250
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastElement = self.viewModel.videoList.videos.count - 1
+        if indexPath.row == lastElement {
+            self.viewModel.fetchData()
+        }
+    }
+}
+
+// MARK: UITableViewDataSource
+extension VideoListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.viewModel.videoList.videos.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "VideoListCell", for: indexPath) as? VideoListCell {
+            cell.configureCell(model: self.viewModel.videoList.videos[indexPath.row])
+            return cell
+        }
+        return UITableViewCell()
+    }
 }
