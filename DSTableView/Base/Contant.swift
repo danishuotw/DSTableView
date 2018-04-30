@@ -6,7 +6,11 @@
 //  Copyright © 2018 ettoday. All rights reserved.
 //
 
+import UIKit
 import Foundation
+
+// MARK: - TableView
+let VIDEO_CELL_HEIGHT: CGFloat = 250
 
 // MARK: - UserDefault Key
 let KEY_IS_AUTO_PLAY = "isAutoPlay"

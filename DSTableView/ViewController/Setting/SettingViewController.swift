@@ -17,10 +17,9 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.setup()
-//        self.tableView.delegate = self
         self.tableView.dataSource = self
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +32,7 @@ class SettingViewController: UIViewController {
     }
     
     private func setup() {
+        self.navigationItem.title = "Setting"
         self.tableView.register(UINib(nibName: "SettingSwitchCell", bundle: nil), forCellReuseIdentifier: "SettingSwitchCell")
     }
 }

@@ -19,6 +19,7 @@ class VideoListViewModel {
     }
 }
 
+// MARK: VideoListViewModelProtocol
 extension VideoListViewModel: VideoListViewModelProtocol {
     func fetchData() {
         VideoListRepository.shared.getVideoListData()

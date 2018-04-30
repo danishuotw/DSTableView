@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class VideoListModel {
+class VideoListModel: NSObject {
     var videos = [VideoModel]()
     
     convenience init(json: JSON) {

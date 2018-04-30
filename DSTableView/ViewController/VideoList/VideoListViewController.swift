@@ -20,13 +20,25 @@ class VideoListViewController: UIViewController {
         self.setup()
         self.viewModel.fetchData()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.visibleCells.forEach {
+            ($0 as? VideoListCell)?.updateReadStatus()
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    deinit {
+        print("VideoListViewController deinit")
+    }
+    
     private func setup() {
+        self.navigationItem.title = "Video"
         self.tableView.register(UINib(nibName: "VideoListCell", bundle: nil), forCellReuseIdentifier: "VideoListCell")
     }
 }
@@ -43,7 +55,7 @@ extension VideoListViewController: VideoListViewProtocol {
 // MARK: UITableViewDelegate
 extension VideoListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        return VIDEO_CELL_HEIGHT
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastElement = self.viewModel.videoList.videos.count - 1
@@ -58,7 +70,6 @@ extension VideoListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel.videoList.videos.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "VideoListCell", for: indexPath) as? VideoListCell {
             cell.configureCell(model: self.viewModel.videoList.videos[indexPath.row])

@@ -20,18 +20,19 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="249.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fFl-IB-gid">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="200" id="Lhh-mn-i6e"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ra3-Kx-Jqx">
                         <rect key="frame" x="16" y="215" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fFl-IB-gid">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="Lhh-mn-i6e"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Ra3-Kx-Jqx" firstAttribute="top" secondItem="fFl-IB-gid" secondAttribute="bottom" constant="15" id="TLh-gX-DIL"/>
@@ -44,7 +45,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="videoImage" destination="fFl-IB-gid" id="FJa-FX-OSA"/>
+                <outlet property="videoImageView" destination="fFl-IB-gid" id="Olj-N7-43K"/>
                 <outlet property="videoTitle" destination="Ra3-Kx-Jqx" id="J6Q-5X-r8O"/>
             </connections>
             <point key="canvasLocation" x="-269.5" y="-3"/>

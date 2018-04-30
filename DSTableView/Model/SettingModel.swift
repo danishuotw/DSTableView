@@ -29,7 +29,7 @@ protocol SettingItemProtocol {
     var rowCount: Int { get }
 }
 
-class UserItem: SettingItemProtocol {
+struct UserItem: SettingItemProtocol {
     var type: SettingItemType {
         return .user
     }
